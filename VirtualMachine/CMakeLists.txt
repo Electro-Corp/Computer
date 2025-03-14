@@ -10,6 +10,7 @@ include_directories(src)
 
 add_executable(VM
     src/pugixml/pugixml.cpp
+    src/Memory.cpp
     src/CPU.cpp
     src/computer.cpp
     src/main.cpp

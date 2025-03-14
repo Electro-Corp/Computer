@@ -8,4 +8,6 @@ int main(){
     LOG(INFO, "LOG_TAG") << "Titanium Virtual Machine starting...\n";
 
     Computer computer("../SampleHardware/TitaniumSystem1.xml");
+
+    while(1){}
 }

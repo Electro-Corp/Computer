@@ -7,6 +7,7 @@ Can I do it? prob not but itll be fun
 Holds code to run the VM for the computer since im not creating my own CPU die
 ##### Third party libraries
 - PugiXML - https://github.com/zeux/pugixml
+- AixLog
 #### Toolchain
 Assembler for the CPU 
 #### OS

@@ -1,0 +1,6 @@
+<Computer> 
+    <name>Titanium System 1</name>
+    <Processing>
+        <CPU name="T80"></CPU>
+    </Processing>
+</Computer>

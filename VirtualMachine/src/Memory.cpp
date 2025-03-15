@@ -1,9 +1,9 @@
 #include <Memory.hpp>
 
 Hardware::MemoryBank::MemoryBank(int size){
-    this->bytes = size;
+    this->bytes = size * 1000;
 
-    this->memory = new unsigned char[size * 1000];
+    this->memory = new unsigned char[bytes];
 
     // Initilize memory
     for(int i = 0; i < size * 1000; i++){
@@ -14,3 +14,20 @@ Hardware::MemoryBank::MemoryBank(int size){
 unsigned char Hardware::MemoryBank::operator[](int i){
     return memory[i];
 } 
+
+
+unsigned char Hardware::Memory::operator[](int i){
+    // Quick little optimization
+    if(i < memoryBanks[0].getSize()){
+        return memoryBanks[0][i];
+    }
+    int totalBytesTraversed = 0;
+    for(int g = 0; g < memoryBanks.size(); g++){
+        totalBytesTraversed += memoryBanks[g].getSize();
+        if(i < totalBytesTraversed){
+            return memoryBanks[g][totalBytesTraversed - i];
+        }
+    }
+    LOG(ERROR, "LOG_ERROR") << "CPU tried to address memory that doesn't physically exist!\n";
+    return 0;
+}

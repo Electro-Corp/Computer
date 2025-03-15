@@ -13,7 +13,7 @@ Computer::Computer(std::string computerInfoPath){
         LOG(INFO, "LOG_TAG") << "Found " << cpuNode.attribute("name").value() << "\n";
 
         // Load the CPU
-        Hardware::CPU cpu = Hardware::CPU(cpuNode.attribute("name").as_string());
+        Hardware::CPU cpu = Hardware::CPU(cpuNode.attribute("name").as_string(), &(this->memory));
         this->cpus.push_back(cpu);
     }
     LOG(INFO, "LOG_TAG") << "Loaded " << this->cpus.size() << " CPU(s).\n";
@@ -27,8 +27,15 @@ Computer::Computer(std::string computerInfoPath){
 
         // Load the Bank
         Hardware::MemoryBank memoryBank(memBank.attribute("size").as_int());
-        this->memoryBanks.push_back(memoryBank);
+        this->memory.memoryBanks.push_back(memoryBank);
     }
-    LOG(INFO, "LOG_TAG") << "Loaded " << this->memoryBanks.size() << " Memory Bank(s).\n";
+    LOG(INFO, "LOG_TAG") << "Loaded " << this->memory.memoryBanks.size() << " Memory Bank(s).\n";
+
+
+
+
+    // Starting computer
+    LOG(INFO, "LOG_TAG") << "Starting " << doc.child("Computer").attribute("name").value() << "...\n";
+    cpus[0].init();
 
 }

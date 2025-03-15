@@ -2,10 +2,15 @@
 
 #include <string>
 
+#include <aixlog.hpp>
+
+#include <Memory.hpp>
+
 namespace Hardware{
     class CPU{
     private:
         std::string processorName;
+        Hardware::Memory* memory;
 
         // General purpose registers
         short ax, bx, cx, dx;
@@ -23,8 +28,8 @@ namespace Hardware{
         short flags;
 
     public:
-        CPU(std::string processorName);
+        CPU(std::string processorName, Hardware::Memory* memory);
 
-        
+        void init();
     };
 }

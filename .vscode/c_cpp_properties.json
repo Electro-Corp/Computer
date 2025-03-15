@@ -11,10 +11,12 @@
                 "/usr/lib/gcc/x86_64-linux-gnu/11/include",
                 "/usr/local/include",
                 "/usr/include/x86_64-linux-gnu",
-                "/usr/include"
+                "/usr/include",
+                "C:\\msys64\\usr\\include",
+                "C:\\msys64\\ucrt64\\include"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++14",
             "intelliSenseMode": "linux-clang-x64"

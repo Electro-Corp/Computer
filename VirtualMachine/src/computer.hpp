@@ -13,7 +13,7 @@ class Computer{
 private:
     // Hardware
     std::vector<Hardware::CPU> cpus;
-    std::vector<Hardware::MemoryBank> memoryBanks;
+    Hardware::Memory memory;
 
     pugi::xml_document doc;
     pugi::xml_parse_result result;

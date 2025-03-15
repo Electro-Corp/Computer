@@ -1,10 +1,9 @@
-<Computer> 
-    <name>Titanium System 1</name>
+<Computer name="Titanium System 1"> 
     <Processing>
         <CPU name="T80"></CPU>
     </Processing>
     <Memory banks="6">
-        <Bank empty="false" size="16000"/>
+        <Bank empty="false" size="2000"/>
         <Bank empty="true" size="0"/>
         <Bank empty="true" size="0"/>
         <Bank empty="true" size="0"/>

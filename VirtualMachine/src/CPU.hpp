@@ -31,5 +31,7 @@ namespace Hardware{
         CPU(std::string processorName, Hardware::Memory* memory);
 
         void init();
+
+        unsigned char instructionReadFromMemory();
     };
 }

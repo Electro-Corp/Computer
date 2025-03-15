@@ -23,15 +23,16 @@ Computer::Computer(std::string computerInfoPath){
     pugi::xml_node memorySlots = doc.child("Computer").child("Memory");
     LOG(INFO, "LOG_TAG") << "Total memory banks: " << memorySlots.attribute("banks").value() << "\n";
     for (pugi::xml_node memBank = memorySlots.child("Bank"); memBank; memBank = memBank.next_sibling("Bank")){
-        LOG(INFO, "LOG_TAG") << "Found bank of size " << memBank.attribute("size").value() << ", and empty is " <<  memBank.attribute("empty").value() << "\n";
+        LOG(INFO, "LOG_TAG") << "Found bank of size " << memBank.attribute("size").value() << "KB, and empty is " <<  memBank.attribute("empty").value() << "\n";
 
         // Load the Bank
         Hardware::MemoryBank memoryBank(memBank.attribute("size").as_int());
         this->memory.memoryBanks.push_back(memoryBank);
     }
     LOG(INFO, "LOG_TAG") << "Loaded " << this->memory.memoryBanks.size() << " Memory Bank(s).\n";
+    LOG(INFO, "LOG_TAG") << "Init BIOS ROM at 0xFFFF0..\n";
 
-
+    LOG(INFO, "LOG_TAG") << "0xB8000 will be set as the Text Mode video memory space.\n";
 
 
     // Starting computer

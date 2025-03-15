@@ -59,7 +59,8 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "stdlib.h": "c"
     },
     "cmake.sourceDirectory": "E:/Electro/Computer/VirtualMachine",
     "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/g++.exe"

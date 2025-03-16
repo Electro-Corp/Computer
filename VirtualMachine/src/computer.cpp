@@ -31,7 +31,8 @@ Computer::Computer(std::string computerInfoPath){
     }
     LOG(INFO, "LOG_TAG") << "Loaded " << this->memory.memoryBanks.size() << " Memory Bank(s).\n";
     LOG(INFO, "LOG_TAG") << "Init BIOS ROM at 0xFFFF0..\n";
-
+    (&this->memory)->setMemory(0xFFFF0, 5);
+    
     LOG(INFO, "LOG_TAG") << "0xB8000 will be set as the Text Mode video memory space.\n";
 
 

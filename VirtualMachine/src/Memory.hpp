@@ -16,6 +16,7 @@ namespace Hardware{
 
         unsigned char operator[](int i);
 
+        void setInBank(int i, unsigned char data);
 
         int getSize(){
             return bytes;
@@ -27,5 +28,8 @@ namespace Hardware{
         std::vector<Hardware::MemoryBank> memoryBanks;
 
         unsigned char operator[](int i); 
+
+        void setMemory(int i, unsigned char data);
+
     };
 }

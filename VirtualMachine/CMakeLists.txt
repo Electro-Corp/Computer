@@ -18,4 +18,4 @@ add_executable(VM
 
 #-fpermissive -Wno-c++11-narrowing
 
-target_compile_options(VM PUBLIC  -g -O0)
+target_compile_options(VM PUBLIC -g -O0)

@@ -13,19 +13,19 @@ namespace Hardware{
         Hardware::Memory* memory;
 
         // General purpose registers
-        short ax, bx, cx, dx;
+        unsigned short ax, bx, cx, dx;
         // Offset registers
-        short si, di;
+        unsigned short si, di;
         // Stack pointer
-        short sp;
+        unsigned short sp;
         // Stack frame
-        short bp;
+        unsigned short bp;
         // Segment pointers
-        short cs, ds, ss, es;
+        unsigned short cs, ds, ss, es;
         // Instruction pointer
-        short ip;
+        unsigned short ip;
         // Flags
-        short flags;
+        unsigned short flags;
 
     public:
         CPU(std::string processorName, Hardware::Memory* memory);

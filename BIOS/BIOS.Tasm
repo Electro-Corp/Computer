@@ -7,21 +7,21 @@
 mov ax 0x4c
 
 mov bx 'T'
-mov [0xB8000] bx
-mov [0xB8001] cx
+mov &0xB8000 bx
+mov &0xB8001 cx
 
 mov bx 'B'
-mov [0xB8002] bx
-mov [0xB8003] cx
+mov &0xB8002 bx
+mov &0xB8003 cx
 
 mov bx 'I'
-mov [0xB8004] bx
-mov [0xB8005] cx
+mov &0xB8004 bx
+mov &0xB8005 cx
 
 mov bx 'O'
-mov [0xB8006] bx
-mov [0xB8007] cx
+mov &0xB8006 bx
+mov &0xB8007 cx
 
 mov bx 'S'
-mov [0xB8008] bx
-mov [0xB8009] cx
+mov &0xB8008 bx
+mov &0xB8009 cx

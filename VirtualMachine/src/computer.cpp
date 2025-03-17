@@ -31,7 +31,21 @@ Computer::Computer(std::string computerInfoPath){
     }
     LOG(INFO, "LOG_TAG") << "Loaded " << this->memory.memoryBanks.size() << " Memory Bank(s).\n";
     LOG(INFO, "LOG_TAG") << "Init BIOS ROM at 0xFFFF0..\n";
-    (&this->memory)->setMemory(0xFFFF0, 5);
+    std::string biosFile = doc.child("Computer").child("BIOS").attribute("location").as_string();
+    LOG(INFO, "LOG_TAG") << "Using BIOS file at " << biosFile << "\n";
+    // Open it
+    std::ifstream bios(biosFile, std::ios::binary);
+    if(!bios.is_open()){
+        LOG(ERROR, "LOG_ERROR") << "Failed to open BIOS!\n";
+        exit(-1);
+    }
+    std::vector<unsigned char> biosBuffer(std::istreambuf_iterator<char>(bios), {});
+    for(int i = 0; i < biosBuffer.size(); i++){
+        (&this->memory)->setMemory(0xFFFF0 + i, biosBuffer[i]);
+    }
+    
+    //(&this->memory)->setMemory(0xFFFF0, 5);
+
     
     LOG(INFO, "LOG_TAG") << "0xB8000 will be set as the Text Mode video memory space.\n";
 

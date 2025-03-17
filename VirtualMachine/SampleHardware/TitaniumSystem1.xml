@@ -1,4 +1,5 @@
 <Computer name="Titanium System 1"> 
+    <BIOS location="../../Toolchain/Assembler/bios"></BIOS>
     <Processing>
         <CPU name="T80"></CPU>
     </Processing>

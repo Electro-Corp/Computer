@@ -6,8 +6,12 @@ namespace Hardware{
     class VGA{
     private:
         int address;
+        std::ofstream displayFile;
+        Hardware::Memory* mem;
     public:
-        VGA(int address);
+        VGA(Hardware::Memory* mem, int address);
         VGA();
+
+        void tick();
     };
 }

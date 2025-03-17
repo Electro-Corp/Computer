@@ -45,15 +45,20 @@ Computer::Computer(std::string computerInfoPath){
     }
     //(&this->memory)->setMemory(0xFFFF0, 5);
     LOG(INFO, "LOG_TAG") << "0xB8000 will be set as the Text Mode video memory space.\n";
-    vga = Hardware::VGA(0xB8000);
+    vga = Hardware::VGA(&(this->memory), 0xB8000);
     // Starting computer
     LOG(INFO, "LOG_TAG") << "Starting " << doc.child("Computer").attribute("name").value() << "...\n";
     cpus[0].init();
     this->memory.dumpMemory();
+    // Create second process
+    system("./VM_DISP");
+    system("START VM_DISP.exe");
+    
 }
 
 void Computer::tick(){
     cpus[0].tick();
+    vga.tick();
     cpus[0].debugPrint();
 }
 

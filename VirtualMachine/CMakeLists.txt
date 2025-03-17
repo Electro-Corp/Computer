@@ -20,3 +20,11 @@ add_executable(VM
 #-fpermissive -Wno-c++11-narrowing
 
 target_compile_options(VM PUBLIC -g -O0)
+
+project(VM_DISP)
+
+add_executable(VM_DISP
+    src/vmDisplay/main.cpp
+)
+
+target_compile_options(VM_DISP PUBLIC -g -O0)

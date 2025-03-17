@@ -6,6 +6,7 @@
 ; Init display
 mov cx 0x4c
 
+; Print "TBIOS v0.1"
 mov bx 'T'
 mov &0xB800 bx
 mov &0xB801 cx
@@ -25,3 +26,19 @@ mov &0xB807 cx
 mov bx 'S'
 mov &0xB808 bx
 mov &0xB809 cx
+
+mov bx 'v'
+mov &0xB812 bx
+mov &0xB813 cx
+
+mov bx '0'
+mov &0xB814 bx
+mov &0xB815 cx
+
+mov bx '.'
+mov &0xB816 bx
+mov &0xB817 cx
+
+mov bx '1'
+mov &0xB818 bx
+mov &0xB819 cx

@@ -16,3 +16,7 @@ Output: `A1 AA 4C`
 Example `mov &0xB8000 bx`
 Hex: `0xA2`
 Output: `A2 B8 00 AB`
+## Move Value into Pointer
+Example `mov &0xB800 0x4c`
+Hex: `0xA3`
+Output: `A3 B8 4C`

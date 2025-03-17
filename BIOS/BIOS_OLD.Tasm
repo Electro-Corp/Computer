@@ -3,14 +3,6 @@
 ; Does nothing besides write to the screen and boot from Disk
 ;
 
-; Start location
-origin 0xFFFF0
-
-; Create Interrupt Table
-
-; Video print char
-mov &0x0010 *0x0020
-
 ; Init display
 mov cx 0x4c
 

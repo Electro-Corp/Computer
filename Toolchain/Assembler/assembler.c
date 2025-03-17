@@ -12,7 +12,8 @@ typedef enum {
     REGISTER_AX = 3,
     REGISTER_BX = 4,
     REGISTER_CX = 5,
-    REGISTER_DX = 6
+    REGISTER_DX = 6,
+    VALUE_W_OFFSET = 7,
 } OperandType;
 
 void usage();
@@ -78,13 +79,23 @@ int main(int args, char* argv[]){
             token = strtok(NULL, " \t");
         }
         
+        int origin = 0x00;
+
         // Ight parse that
         for(int g = 0; g < keysCount; g++){
             if(strcmp(";", keys[g]) == 0){
                 // Give up lmao
                 break;
             }
-            
+            if(strcmp("origin", keys[g]) == 0){
+                if(getHexFromValue(keys[g+1]) != -1){
+                    origin = getHexFromValue(keys[g+1]);
+                    printf("%x set as program origin!\n", getHexFromValue(keys[g+1]));
+                }else{
+                    printf("ERROR - Origin address invalid!\n");
+                    exit(-1);
+                }
+            }
             // ughhhhh ight compile this stuff
             if(strcmp("mov", keys[g]) == 0){
                 // Ight calculate some things....
@@ -102,56 +113,90 @@ int main(int args, char* argv[]){
                     // figure out what register specifcally   
                     oper1 = getRegisterFromOperandType(op1);
                 }else{
-                    if(op1 == VALUE){
-                        // Check for hex
-                        if(getHexFromValue(keys[g+1]) != -1){
-                            oper1 = getHexFromValue(keys[g+1]);
-                        }else{
-                            if(keys[g+1][0] == '\''){
-                                oper1 = (char)keys[g+1][1];
+                    switch(op1){
+                        case VALUE: 
+                        {
+                            // Check for hex
+                            if(getHexFromValue(keys[g+1]) != -1){
+                                oper1 = getHexFromValue(keys[g+1]);
+                            }else{
+                                if(keys[g+1][0] == '\''){
+                                    oper1 = (char)keys[g+1][1];
+                                }
                             }
+                            break;
                         }
-                    }
-                    if(op1 == POINTER){
-                        // We gotta remove the '&'
-                        char toBeSent[strlen(keys[g+1]) - 1];
-                        strcpy(toBeSent, &keys[g+1][1]);
-                        int locPoint = getHexFromValue(toBeSent);
-                        if(locPoint > 0xFF){
-                            // Split it
-                            fatten1Or2 = 1;
-                            oper1 = locPoint & 0xFF; // Low
-                            operO = (locPoint >> 8) /*& 0xFF*/; // High 
-                        }else{
-                            oper1 = locPoint;
+                        case POINTER:
+                        {
+                            // We gotta remove the '&'
+                            char toBeSent[strlen(keys[g+1]) - 1];
+                            strcpy(toBeSent, &keys[g+1][1]);
+                            int locPoint = getHexFromValue(toBeSent);
+                            if(locPoint > 0xFF){
+                                // Split it
+                                fatten1Or2 = 1;
+                                oper1 = locPoint & 0xFF; // Low
+                                operO = (locPoint >> 8) /*& 0xFF*/; // High 
+                            }else{
+                                oper1 = locPoint;
+                            }
+                            break;
+                        }
+                        case VALUE_W_OFFSET:
+                        {
+                            char toBeSent[strlen(keys[g+1]) - 1];
+                            strcpy(toBeSent, &keys[g+1][1]);
+                            if(getHexFromValue(toBeSent) != -1){
+                                oper1 = getHexFromValue(toBeSent) + origin;
+                            }else{
+                                printf("ERROR - %s - What am I supposed to do with this?\n", toBeSent);
+                            }
+                            break;
                         }
                     }
                 }
                 if(op2isRegister){
                     oper2 = getRegisterFromOperandType(op2);
                 }else{
-                    if(op2 == VALUE){
-                        // Check for hex
-                        if(getHexFromValue(keys[g+2]) != -1){
-                            oper2 = getHexFromValue(keys[g+2]);
-                        }else{
-                            if(keys[g+2][0] == '\''){
-                                oper2 = (char)keys[g+2][1];
+                    switch(op2){
+                        case VALUE: 
+                        {
+                            // Check for hex
+                            if(getHexFromValue(keys[g+2]) != -1){
+                                oper2 = getHexFromValue(keys[g+2]);
+                            }else{
+                                if(keys[g+2][0] == '\''){
+                                    oper2 = (char)keys[g+2][1];
+                                }
                             }
+                            break;
                         }
-                    }
-                    if(op1 == POINTER){
-                        // We gotta remove the '&'
-                        char toBeSent[strlen(keys[g+2]) - 1];
-                        strcpy(toBeSent, &keys[g+2][1]);
-                        int locPoint = getHexFromValue(toBeSent);
-                        if(locPoint > 0xFF){
-                            // Split it
-                            fatten1Or2 = 2;
-                            oper2 = locPoint & 0xFF;
-                            operO = (locPoint >> 8) & 0xFF; 
-                        }else{
-                            oper2 = locPoint;
+                        case POINTER:
+                        {
+                            // We gotta remove the '&'
+                            char toBeSent[strlen(keys[g+2]) - 1];
+                            strcpy(toBeSent, &keys[g+2][1]);
+                            int locPoint = getHexFromValue(toBeSent);
+                            if(locPoint > 0xFF){
+                                // Split it
+                                fatten1Or2 = 2;
+                                oper2 = locPoint & 0xFF; // Low
+                                operO = (locPoint >> 8) /*& 0xFF*/; // High 
+                            }else{
+                                oper2 = locPoint;
+                            }
+                            break;
+                        }
+                        case VALUE_W_OFFSET:
+                        {
+                            char toBeSent[strlen(keys[g+2]) - 1];
+                            strcpy(toBeSent, &keys[g+2][1]);
+                            if(getHexFromValue(toBeSent) != -1){
+                                oper2 = getHexFromValue(toBeSent) + origin;
+                            }else{
+                                printf("ERROR - %s - What am I supposed to do with this?\n", toBeSent);
+                            }
+                            break;
                         }
                     }
                 }
@@ -160,11 +205,14 @@ int main(int args, char* argv[]){
                 if(op1isRegister && op2isRegister){
                     command = 0xA0;
                 }
-                if(op1isRegister && op2 == VALUE){
+                if(op1isRegister && (op2 == VALUE || op2 == VALUE_W_OFFSET)){
                     command = 0xA1;
                 }
                 if(op1 == POINTER && op2isRegister){
                     command = 0xA2;
+                }
+                if(op1 == POINTER && (op2 == VALUE || op2 == VALUE_W_OFFSET)){
+                    command = 0xA3;
                 }
 
                 printf("Writing to disk: %x %x %x (%x)\n", command, oper1, oper2, operO);
@@ -188,6 +236,9 @@ int main(int args, char* argv[]){
 OperandType getOpType(char* op){
     if(op[0] == '&'){
         return POINTER;
+    }
+    if(op[0] == '*'){
+        return VALUE_W_OFFSET;
     }
     // Goddamn it compare it to all the registers 
     if(strcmp("ax", op) == 0){

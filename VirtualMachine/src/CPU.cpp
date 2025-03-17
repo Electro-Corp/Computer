@@ -61,6 +61,20 @@ void Hardware::CPU::tick(){
             this->ip++;
             break;
         }
+        // Value into Pointer
+        case 0xA3:
+        {
+            this->ip++;
+            // Grab pointer location
+            unsigned char location = instructionReadFromMemory();
+            this->ip++;
+            // Grab value
+            unsigned char value = instructionReadFromMemory();
+            // Write
+            this->memory->setMemory(location, value);
+            this->ip++;
+            break;
+        }
         default:
             LOG(INFO, "LOG_TAG") << std::to_string(instructionReadFromMemory()) << "is a command that the CPU doesn't know how to handle yet!" << "\n";
             break;

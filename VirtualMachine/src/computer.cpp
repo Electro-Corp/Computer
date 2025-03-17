@@ -43,15 +43,20 @@ Computer::Computer(std::string computerInfoPath){
     for(int i = 0; i < biosBuffer.size(); i++){
         (&this->memory)->setMemory(0xFFFF0 + i, biosBuffer[i]);
     }
-    
     //(&this->memory)->setMemory(0xFFFF0, 5);
-
-    
     LOG(INFO, "LOG_TAG") << "0xB8000 will be set as the Text Mode video memory space.\n";
-
-
+    vga = Hardware::VGA(0xB8000);
     // Starting computer
     LOG(INFO, "LOG_TAG") << "Starting " << doc.child("Computer").attribute("name").value() << "...\n";
     cpus[0].init();
+    this->memory.dumpMemory();
+}
 
+void Computer::tick(){
+    cpus[0].tick();
+    cpus[0].debugPrint();
+}
+
+void Computer::shutdown(){
+    this->memory.dumpMemory();
 }

@@ -11,4 +11,7 @@
         <Bank empty="true" size="0"/>
         <Bank empty="true" size="0"/>
     </Memory>
+    <Graphics>
+        <VGA></VGA>
+    </Graphics>
 </Computer>

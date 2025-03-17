@@ -60,7 +60,13 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "format": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "charconv": "cpp",
+        "optional": "cpp",
+        "iomanip": "cpp",
+        "span": "cpp",
+        "text_encoding": "cpp",
+        "variant": "cpp"
     },
     "cmake.sourceDirectory": "E:/Electro/Computer/VirtualMachine",
     "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/g++.exe"

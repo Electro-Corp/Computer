@@ -21,6 +21,10 @@ namespace Hardware{
         int getSize(){
             return bytes;
         } 
+
+        unsigned char* getMemory(){
+            return memory;
+        }
     };
 
     class Memory{
@@ -30,6 +34,8 @@ namespace Hardware{
         unsigned char operator[](int i); 
 
         void setMemory(int i, unsigned char data);
+
+        void dumpMemory();
 
     };
 }

@@ -106,6 +106,10 @@ int main(int args, char* argv[]){
                         // Check for hex
                         if(getHexFromValue(keys[g+1]) != -1){
                             oper1 = getHexFromValue(keys[g+1]);
+                        }else{
+                            if(keys[g+1][0] == '\''){
+                                oper1 = (char)keys[g+1][1];
+                            }
                         }
                     }
                     if(op1 == POINTER){
@@ -130,6 +134,10 @@ int main(int args, char* argv[]){
                         // Check for hex
                         if(getHexFromValue(keys[g+2]) != -1){
                             oper2 = getHexFromValue(keys[g+2]);
+                        }else{
+                            if(keys[g+2][0] == '\''){
+                                oper2 = (char)keys[g+2][1];
+                            }
                         }
                     }
                     if(op1 == POINTER){

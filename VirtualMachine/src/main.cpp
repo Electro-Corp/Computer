@@ -9,5 +9,11 @@ int main(){
 
     Computer computer("../SampleHardware/TitaniumSystem1.xml");
 
-    while(1){}
+    while(1){
+        char c = getchar();
+        if(c == 'q') break;
+        LOG(DEBUG, "LOG_DEBUG") << "Ticking...\n";
+        computer.tick();
+    }
+    computer.shutdown();
 }

@@ -52,3 +52,12 @@ void Hardware::Memory::setMemory(int i, unsigned char data){
     LOG(ERROR, "LOG_ERROR") << "CPU tried to address memory that doesn't physically exist!\n";
     return;
 }
+
+void Hardware::Memory::dumpMemory(){
+    // 
+    FILE* fp = fopen("memory.dump", "wb");
+    for(int i = 0; i < memoryBanks.size(); i++){
+        fwrite(memoryBanks[i].getMemory(), sizeof(unsigned char), memoryBanks[i].getSize(), fp);
+    }
+    fclose(fp);
+}

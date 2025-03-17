@@ -55,6 +55,7 @@ void Hardware::Memory::setMemory(int i, unsigned char data){
 
 void Hardware::Memory::dumpMemory(){
     // 
+    LOG(DEBUG, "LOG_DEBUG") << "Dumping memory...\n";
     FILE* fp = fopen("memory.dump", "wb");
     for(int i = 0; i < memoryBanks.size(); i++){
         fwrite(memoryBanks[i].getMemory(), sizeof(unsigned char), memoryBanks[i].getSize(), fp);

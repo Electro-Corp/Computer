@@ -44,8 +44,8 @@ Computer::Computer(std::string computerInfoPath){
         (&this->memory)->setMemory(0xFFFF0 + i, biosBuffer[i]);
     }
     //(&this->memory)->setMemory(0xFFFF0, 5);
-    LOG(INFO, "LOG_TAG") << "0xB8000 will be set as the Text Mode video memory space.\n";
-    vga = Hardware::VGA(&(this->memory), 0xB8000);
+    LOG(INFO, "LOG_TAG") << "0xB800 will be set as the Text Mode video memory space.\n";
+    vga = Hardware::VGA(&(this->memory), 0xB800);
     // Starting computer
     LOG(INFO, "LOG_TAG") << "Starting " << doc.child("Computer").attribute("name").value() << "...\n";
     cpus[0].init();

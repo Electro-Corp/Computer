@@ -120,8 +120,8 @@ int main(int args, char* argv[]){
                         if(locPoint > 0xFF){
                             // Split it
                             fatten1Or2 = 1;
-                            oper1 = locPoint & 0xFF;
-                            operO = (locPoint >> 8) & 0xFF; 
+                            oper1 = locPoint & 0xFF; // Low
+                            operO = (locPoint >> 8) /*& 0xFF*/; // High 
                         }else{
                             oper1 = locPoint;
                         }

@@ -4,24 +4,24 @@
 ;
 
 ; Init display
-mov ax 0x4c
+mov cx 0x4c
 
 mov bx 'T'
-mov &0xB8000 bx
-mov &0xB8001 cx
+mov &0xB800 bx
+mov &0xB801 cx
 
 mov bx 'B'
-mov &0xB8002 bx
-mov &0xB8003 cx
+mov &0xB802 bx
+mov &0xB803 cx
 
 mov bx 'I'
-mov &0xB8004 bx
-mov &0xB8005 cx
+mov &0xB804 bx
+mov &0xB805 cx
 
 mov bx 'O'
-mov &0xB8006 bx
-mov &0xB8007 cx
+mov &0xB806 bx
+mov &0xB807 cx
 
 mov bx 'S'
-mov &0xB8008 bx
-mov &0xB8009 cx
+mov &0xB808 bx
+mov &0xB809 cx

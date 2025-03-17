@@ -49,10 +49,11 @@ void Hardware::CPU::tick(){
         {
             this->ip++;
             // This guy 4 bytes
+            // First part
             unsigned char high = instructionReadFromMemory();
             this->ip++;
             unsigned char low = instructionReadFromMemory();
-            unsigned short final = (low << 4) | high;
+            unsigned short final = (low << 8) | high;
             this->ip++;
             unsigned char reg2 = instructionReadFromMemory();
             // Write it into memory

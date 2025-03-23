@@ -50,3 +50,6 @@ mov &0xB817 cx
 mov bx '1'
 mov &0xB818 bx
 mov &0xB819 cx
+
+print:
+mov &0x0020 0x44

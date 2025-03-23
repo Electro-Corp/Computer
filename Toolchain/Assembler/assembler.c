@@ -16,6 +16,11 @@ typedef enum {
     VALUE_W_OFFSET = 7,
 } OperandType;
 
+typedef struct{
+    char name[256];
+    unsigned char address;
+} Function;
+
 void usage();
 
 int getHexFromValue(char* value);
@@ -78,16 +83,18 @@ int main(int args, char* argv[]){
             keysCount++;
             token = strtok(NULL, " \t");
         }
+
+        Function functions[256];
         
         int origin = 0x00;
+        
 
         // Ight parse that
         for(int g = 0; g < keysCount; g++){
             if(strcmp(";", keys[g]) == 0){
                 // Give up lmao
                 break;
-            }
-            if(strcmp("origin", keys[g]) == 0){
+            } else if(strcmp("origin", keys[g]) == 0){
                 if(getHexFromValue(keys[g+1]) != -1){
                     origin = getHexFromValue(keys[g+1]);
                     printf("%x set as program origin!\n", getHexFromValue(keys[g+1]));
@@ -97,7 +104,7 @@ int main(int args, char* argv[]){
                 }
             }
             // ughhhhh ight compile this stuff
-            if(strcmp("mov", keys[g]) == 0){
+            else if(strcmp("mov", keys[g]) == 0){
                 // Ight calculate some things....
                 // First we gotta figure out what kinda mov operation it is
                 OperandType op1 = getOpType(keys[g + 1]);
@@ -223,6 +230,20 @@ int main(int args, char* argv[]){
                 if(fatten1Or2 == 1) output[written++] = operO;
                 output[written++] = oper2;
                 if(fatten1Or2 == 2) output[written++] = operO;
+            }
+            else{
+                // mmmmaybe its a function name 
+                if(g == 0){
+                    Function function;
+                    int i = 0;
+                    while(keys[g][i] && keys[g][i] != ':'){
+                        function.name[i] = keys[g][i];
+                        i++;
+                    }
+                    printf("Found function: %s\n", function.name);
+                    // Alright... hm i dunno
+                    
+                }
             }
         }
     }

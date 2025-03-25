@@ -51,8 +51,13 @@ Computer::Computer(std::string computerInfoPath){
     cpus[0].init();
     this->memory.dumpMemory();
     // Create second process
-    system("./VM_DISP");
+    //system("xterm ./VM_DISP");
+#ifdef WINDOWS
     system("START VM_DISP.exe");
+#endif
+#ifdef __linux__
+    LOG(WARNING, "LOG_WARNING") << "To view VGA display output on Linux, start VM_DISP in another terminal window.\n";
+#endif
     
 }
 

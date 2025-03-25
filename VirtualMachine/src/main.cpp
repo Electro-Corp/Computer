@@ -9,6 +9,8 @@ int main(){
 
     Computer computer("../SampleHardware/TitaniumSystem1.xml");
 
+    LOG(DEBUG, "LOG_DEBUG") << "Press ENTER to step through...\n";
+
     while(1){
         char c = getchar();
         if(c == 'q') break;

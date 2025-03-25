@@ -21,8 +21,12 @@ int main(){
         auto current_mod_time = fs::last_write_time("disp");
 
         if (current_mod_time != last_mod_time) {
-            system("clear");
+#ifdef WINDOWS
             system("cls");
+#endif
+#ifdef __linux__
+            system("clear");
+#endif
             std::ifstream file("disp");
             while (std::getline(file, str)){
                 std::cout << str << "\n";

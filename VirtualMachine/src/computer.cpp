@@ -43,7 +43,6 @@ Computer::Computer(std::string computerInfoPath){
     for(int i = 0; i < biosBuffer.size(); i++){
         (&this->memory)->setMemory(0xFFFF0 + i, biosBuffer[i]);
     }
-    //(&this->memory)->setMemory(0xFFFF0, 5);
     LOG(INFO, "LOG_TAG") << "0xB800 will be set as the Text Mode video memory space.\n";
     vga = Hardware::VGA(&(this->memory), 0xB800);
     // Starting computer
@@ -52,7 +51,7 @@ Computer::Computer(std::string computerInfoPath){
     this->memory.dumpMemory();
     // Create second process
     //system("xterm ./VM_DISP");
-#ifdef WINDOWS
+#ifdef _WIN32
     system("START VM_DISP.exe");
 #endif
 #ifdef __linux__

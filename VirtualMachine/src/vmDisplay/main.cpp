@@ -21,7 +21,7 @@ int main(){
         auto current_mod_time = fs::last_write_time("disp");
 
         if (current_mod_time != last_mod_time) {
-#ifdef WINDOWS
+#ifdef _WIN32
             system("cls");
 #endif
 #ifdef __linux__

@@ -1,0 +1,3 @@
+E:\vs2022\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E rm -f CMakeFiles\VM_DISP.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\VM_DISP.dir/objects.a @CMakeFiles\VM_DISP.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\VM_DISP.dir/objects.a -Wl,--no-whole-archive -o VM_DISP.exe -Wl,--out-implib,libVM_DISP.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\VM_DISP.dir\linkLibs.rsp

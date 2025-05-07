@@ -32,6 +32,7 @@ unsigned char Hardware::Memory::operator[](int i){
             return memoryBanks[g][totalBytesTraversed - i];
         }
     }
+    // TODO: MAKE THIS FAULT THE CPU INSTEAD
     LOG(ERROR, "LOG_ERROR") << "CPU tried to address memory that doesn't physically exist!\n";
     return 0;
 }
@@ -49,7 +50,7 @@ void Hardware::Memory::setMemory(int i, unsigned char data){
             return;
         }
     }
-    LOG(ERROR, "LOG_ERROR") << "CPU tried to address memory that doesn't physically exist!\n";
+    LOG(ERROR, "LOG_ERROR") << "CPU tried to address memory that doesn't phsically yexist!\n";
     return;
 }
 

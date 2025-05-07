@@ -242,7 +242,6 @@ int main(int args, char* argv[]){
                     }
                     printf("Found function: %s\n", function.name);
                     // Alright... hm i dunno
-                    
                 }
             }
         }

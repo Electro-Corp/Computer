@@ -1,0 +1,44 @@
+[
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM.dir\\src\\pugixml\\pugixml.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\pugixml\\pugixml.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/pugixml/pugixml.cpp",
+  "output": "CMakeFiles/VM.dir/src/pugixml/pugixml.cpp.obj"
+},
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM.dir\\src\\Memory.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\Memory.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/Memory.cpp",
+  "output": "CMakeFiles/VM.dir/src/Memory.cpp.obj"
+},
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM.dir\\src\\CPU.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\CPU.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/CPU.cpp",
+  "output": "CMakeFiles/VM.dir/src/CPU.cpp.obj"
+},
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM.dir\\src\\VGA.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\VGA.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/VGA.cpp",
+  "output": "CMakeFiles/VM.dir/src/VGA.cpp.obj"
+},
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM.dir\\src\\computer.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\computer.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/computer.cpp",
+  "output": "CMakeFiles/VM.dir/src/computer.cpp.obj"
+},
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM.dir\\src\\main.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\main.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/main.cpp",
+  "output": "CMakeFiles/VM.dir/src/main.cpp.obj"
+},
+{
+  "directory": "E:/Electro/Computer/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/VM_DISP.dir/includes_CXX.rsp -g -std=gnu++20 -g -O0 -o CMakeFiles\\VM_DISP.dir\\src\\vmDisplay\\main.cpp.obj -c E:\\Electro\\Computer\\VirtualMachine\\src\\vmDisplay\\main.cpp",
+  "file": "E:/Electro/Computer/VirtualMachine/src/vmDisplay/main.cpp",
+  "output": "CMakeFiles/VM_DISP.dir/src/vmDisplay/main.cpp.obj"
+}
+]

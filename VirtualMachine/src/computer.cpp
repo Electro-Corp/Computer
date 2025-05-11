@@ -1,6 +1,7 @@
 #include <computer.hpp>
 
 /*
+    Create new computer from XML config
 */
 Computer::Computer(std::string computerInfoPath){
     LOG(INFO, "LOG_TAG") << "Loading computer from " << computerInfoPath << "\n";
